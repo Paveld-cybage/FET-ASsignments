@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compound Interest</title>
+</head>
+<body>
+    Principle : <input id="principle" name="Principle" type="number">
+    <br>
+    Rate Of Interest : <input id="interest" name="Interest" type="number">
+    <br>
+    Period in Years : <input id="year" name="Year" type="number">
+    <br>
+    <button onclick="calcInt()">C.I.</button>
+    <p id="demo"></p>
+
+    <script>
+    var p = document.getElementById("principle").value;
+    var r = document.getElementById("interest").value;
+    var n = document.getElementById("year").value;
+    
+    var res = ((p * Math.pow((1 + r/100),n)) - p);
+    function calcInt(res) {
+    document.getElementById("demo").innerHTML = parseInt(res);
+    }
+    </script>
+    
+</body>
+</html>

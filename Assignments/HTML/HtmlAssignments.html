@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./canvasDraw.js"></script>
+</head>
+<body onload="bodyload()">
+
+    <h1>Assignment 1</h1>
+
+    <p>Know your location</p>
+    <button onclick="getPosition()">Locate Me</button>
+    <p id="demo"></p>
+
+    <script>
+
+        var x = document.getElementById("demo");
+
+        function getPosition() {
+            if(navigator.geolocation){
+                navigator.geolocation.getCurrentPosition(showPosition);
+            }else {
+                x.innerHTML = "Your browser doesn't support location";
+            }
+        }
+
+        function showPosition(position) {
+            x.innerHTML = "Latitude : " + position.coords.latitude + "<br>Longitude : " + position.coords.longitude;
+        }
+    </script>
+
+    <hr>
+    <br>
+    <h1>Assignment 2</h1>
+
+    <div>
+        <p> TO color this para inside the div para ! </p>
+        <button onclick="myQuerySelector()">COLOR</button>
+    </div>
+    <script>
+        function myQuerySelector() {
+            document.querySelector("div > p").style.backgroundColor = "Yellow";
+        }
+    </script>
+
+<hr>
+<br>
+<h1>Assignment 3</h1>
+
+<script>
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+
+    function drag(ev) {
+        ev.dataTransfer.setData("text",ev.target.id);
+    }
+
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+
+    }
+</script>
+<p>Drag the butterfly in the dox</p>
+<br>
+<div id="div1" style="width: 350px; height: 70px; padding: 10px; border: 1px solid Black" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<br>
+<img id="drag1" src="./butterfly.jpg" draggable="true" ondragstart="drag(event)" width="336" height="69">
+
+<hr>
+<br>
+<h1>Assignment 4</h1>
+
+<p>Implementation for web workers</p>
+<p>Total number of counts : <output id="result"></output></p>
+<button onclick="startWorker()">Start</button>
+<button onclick="stopWorker()">Stop</button>
+
+<script>
+    function startWorker() {
+        if(typeof(Worker) !== "undefined") {
+            if(typeof(w) == "undefined") {
+                w = new Worker("demo_workers.js")
+            }
+
+            w.onmessage = function(event) {
+                document.getElementById("result").innerHTML = event.data;
+            };
+        } else {
+            document.getElementById("result").innerHTML = "Your browser doesn't support web workers"
+        }
+    }
+
+    function stopWorker() {
+        w.terminate();
+        w = undefined;
+    }
+</script>
+
+<hr>
+<br>
+<h1>Assignment 5</h1>
+
+<canvas id="myCanvas" width="400" height="200"></canvas>
+
+
+
+
+    
+</body>
+</html>

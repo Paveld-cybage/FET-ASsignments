@@ -1,0 +1,24 @@
+.colth {
+    border: 1px solid rgb(190, 190, 190);
+    padding: 10px;
+    background-color: grey;
+}
+
+.rowoddtr {
+    border: 1px solid rgb(190, 190, 190);
+    padding: 10px;
+    background-color: greenyellow;
+}
+
+.roweventr {
+    border: 1px solid rgb(190, 190, 190);
+    padding: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    border: 2px solid rgb(200, 200, 200);
+    letter-spacing: 1px;
+    font-family: sans-serif;
+    font-size: .8rem;
+}
